@@ -1,0 +1,14 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+    {% if poll %}
+        <p>{{ poll.question }}</p>
+        <ul>
+            {% for option in poll.options %}
+            <li><span class="poll-option">{{ option }}</span></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No such poll!</p>
+    {% endif %}
+{% endblock %}

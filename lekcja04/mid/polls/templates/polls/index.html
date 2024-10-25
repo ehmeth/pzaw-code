@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome polls page</title>
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+    <div id="content" class="container">
+        {{ content }}
+        <ul>
+        {% for name, values in polls.items %}
+            <li><a href="/polls/{{ name }}/">{{ values.question }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+    <script src="{% static 'polls/app.js' %}"></script>
+</body>
+</html>

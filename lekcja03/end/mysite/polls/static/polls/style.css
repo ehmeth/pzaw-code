@@ -1,0 +1,63 @@
+.container {
+   margin: 0 auto;
+   width: 80%;
+   color: #222;
+   background-color: #F8FFF8;
+}
+
+main {
+   padding: 10px;
+}
+
+nav, footer {
+   background-color: #2C7850;
+   color: #7FB;
+   text-align: center;
+   padding: .4em;
+   font-family: monospace;
+}
+
+header {
+   background-color: #4D9;
+   color: #222;
+   padding: 0.3em 30px;
+}
+
+nav {
+   display: flex;
+   flex-direction: column;
+}
+
+nav > a {
+   flex: 1;
+   text-align: center;
+   text-decoration: none;
+   color: #7FB;
+}
+
+pre {
+   padding: 1em;
+   white-space: pre-wrap;
+   word-wrap: break-word;
+}
+
+h1, h2, h3, h4 {
+   font-family: monospace;
+}
+
+@media only screen and (min-width: 768px) {
+   nav { flex-direction: row; }
+
+   .project-container { display: flex; }
+
+   .project-container .project-list { width: 20% }
+
+   .project-container .project { flex: 1 }
+
+   .presentation-container { display: flex; }
+
+   .presentation-container .presentation-list { width: 20% }
+
+   .presentation-container .presentation { flex: 1 }
+}
+

@@ -1,0 +1,30 @@
+.container {
+   margin: 0 auto;
+   width: 80%;
+   color: #222;
+   background-color: #d4d1ff;
+   padding: 2rem;
+}
+
+.container ul {
+   list-style-type: none;
+   padding: .1rem;
+   margin: .1rem 0;
+}
+
+.container ul li {
+   margin: .9rem 0;
+}
+.container a {
+   background-color: #b1adfe;
+   border-radius: .2rem;
+   padding: .2rem;
+}
+
+.container .poll-option {
+   background-color: #86acf6;
+   font-weight: bold;
+   font-family: sans-serif;
+   border-radius: .2rem;
+   padding: .3rem 1rem;
+}

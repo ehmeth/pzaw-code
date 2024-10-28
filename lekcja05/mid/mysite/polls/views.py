@@ -1,50 +1,28 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.http import HttpResponseBadRequest
 
 open_polls = {
     "pets": {
         "question": "Which are better, cats or dogs?",
         "options": [
-            {
-                'text': "cats",
-                'votes': 0,
-            },
-            {
-                'text': "dogs",
-                'votes': 0,
-            },
+            "cats",
+            "dogs",
         ],
     },
     "flavours": {
         "question": "Which is better? Chocolate or vanilla?",
         "options": [
-            {
-                'text': "chocolate",
-                'votes': 0,
-            },
-            {
-                'text': "vanilla",
-                'votes': 0,
-            },
+            "chocolate",
+            "vanilla",
         ],
     },
     "baby-boy-names": 
     {
         "question": "What is the best name for a baby boy?",
         "options": [
-            {
-                'text': "bryan",
-                'votes': 0,
-            },
-            {
-                'text': "donald",
-                'votes': 0,
-            },
-            {
-                'text': "justin",
-                'votes': 0,
-            },
+            "bryan",
+            "donald",
+            "justin",
         ]
     }
 }
@@ -55,14 +33,13 @@ poll_names = [
     "baby-boy-names",
 ]
 
+
 def index(request):
     context = { "polls": open_polls }
     return render(request, "polls/index.html", context)
 
 def by_name(request, poll_name):
-    context = {
-        "poll_name": poll_name,
-    }
+    context = {}
     retcode = 200
     if poll_name in poll_names:
         context['poll'] = open_polls[poll_name]
@@ -70,23 +47,10 @@ def by_name(request, poll_name):
         retcode = 404
     return render(request, "polls/poll.html", context, status=retcode)
 
-def vote(request, poll_name):
-    retcode = 200
-    if poll_name in poll_names:
-        selected_choice = open_polls[poll_name]['options'][int(request.POST["choice"])]
-        selected_choice['votes'] += 1
-        return HttpResponseRedirect(reverse("polls:results", args=[poll_name]))
+def forms(request):
+    if request.method == 'GET':
+        return render(request, "polls/forms.html", {})
+    elif request.method == 'POST':
+        return render(request, "polls/post.html", {'params': request.POST})
     else:
-        return render( request, "polls/detail.html", { "poll_name": poll_name, },)
-
-def results(request, poll_name):
-    context = {
-        "poll_name": poll_name,
-    }
-    retcode = 200
-    if poll_name in poll_names:
-        context['poll'] = open_polls[poll_name]
-        context['total_votes'] = max(1, sum(option['votes'] for option in open_polls[poll_name]['options']))
-    else:
-        retcode = 404
-    return render(request, "polls/results.html", context, status=retcode)
+        return HttpResponseBadRequest("Unsupported method")

@@ -1,0 +1,54 @@
+{% extends "polls/base.html" %}
+{% block content %}
+    <form action="{% url 'polls:forms' %}" method="POST">
+        {% csrf_token %}
+        <label for="idButton">Button</label>
+        <input id="idButton" type="button" value="click me"><br>
+        <label for="idCheckbox">Checkbox</label>
+        <input name="checkbox" id="idCheckbox" type="checkbox"><br>
+        <label for="idColor">Color</label>
+        <input name="color" id="idColor" type="color"><br>
+        <label for="idDate">Date</label>
+        <input name="date" id="idDate" type="date"><br>
+        <label for="idDatetimeLocal">DatetimeLocal</label>
+        <input name="datetime-local" id="idDatetimeLocal" type="datetime-local"><br>
+        <label for="idEmail">Email</label>
+        <input name="email" id="idEmail" type="email"><br>
+        <label for="idFile">File</label>
+        <input name="file" id="idFile" type="file"><br>
+        <label for="idHidden">Hidden</label>
+        <input name="hidden" id="idHidden" type="hidden"><br>
+        <label for="idImage">Image</label>
+        <input name="image" id="idImage" type="image"><br>
+        <label for="idMonth">Month</label>
+        <input name="month" id="idMonth" type="month"><br>
+        <label for="idNumber">Number</label>
+        <input name="number" id="idNumber" type="number"><br>
+        <label for="idPassword">Password</label>
+        <input name="password" id="idPassword" type="password"><br>
+        <label for="idRadio1">Radio 1</label>
+        <input id="idRadio1" name="radio" type="radio" value="1"><br>
+        <label for="idRadio2">Radio 2</label>
+        <input id="idRadio2" name="radio" type="radio" value="2"><br>
+        <label for="idRadio3">Radio 3</label>
+        <input id="idRadio3" name="radio" type="radio" value="foo"><br>
+        <label for="idRange">Range</label>
+        <input name="range" id="idRange" type="range"><br>
+        <label for="idSearch">Search</label>
+        <input name="search" id="idSearch" type="search"><br>
+        <label for="idTel">Tel</label>
+        <input name="tel" id="idTel" type="tel"><br>
+        <label for="idText">Text</label>
+        <input name="text" id="idText" type="text"><br>
+        <label for="idTime">Time</label>
+        <input name="time" id="idTime" type="time"><br>
+        <label for="idUrl">Url</label>
+        <input name="url" id="idUrl" type="url"><br>
+        <label for="idWeek">Week</label>
+        <input name="week" id="idWeek" type="week"><br>
+        <label for="idSubmit">Submit</label>
+        <input id="idSubmit" type="submit">
+        <label for="idReset">Reset</label>
+        <input id="idReset" type="reset"><br>
+    </form>
+{% endblock content %}

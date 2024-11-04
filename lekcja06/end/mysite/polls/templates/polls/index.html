@@ -1,0 +1,11 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+    Currently open polls are:
+    <ul>
+    {% for name, values in polls.items %}
+        <li><a href="{% url 'polls:poll' name %}">{{ values.question }}</a></li>
+    {% endfor %}
+    </ul>
+    <a href="{% url "polls:new" %}" class="new-poll-button">Add new poll</a>
+{% endblock %}

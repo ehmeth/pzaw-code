@@ -1,0 +1,19 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+    {% if poll %}
+        <form action="{% url 'polls:vote' poll.id%}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend><h3>{{ poll.question_text }}</h3></legend>
+            {% for choice in poll.choice_set.all %}
+                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ forloop.counter0 }}">
+                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+            {% endfor %}
+        </fieldset>
+        <input type="submit" value="Vote">
+        </form>
+    {% else %}
+        <p>No such poll!</p>
+    {% endif %}
+{% endblock %}

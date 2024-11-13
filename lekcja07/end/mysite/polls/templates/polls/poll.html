@@ -1,0 +1,13 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+    {% if poll and vote_form %}
+        <form action="{% url 'polls:vote' poll.id%}" method="post">
+        {% csrf_token %}
+        {{ vote_form }}
+        <input type="submit" value="Vote">
+        </form>
+    {% else %}
+        <p>No such poll!</p>
+    {% endif %}
+{% endblock %}

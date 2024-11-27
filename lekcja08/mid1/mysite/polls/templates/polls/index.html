@@ -1,0 +1,11 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+    Recent polls:
+    <ul>
+    {% for poll in latest_polls %}
+        <li><a href="{% url 'polls:details' poll.id %}">{{ poll.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+    <a href="{% url "polls:new" %}" class="new-poll-button">Add new poll</a>
+{% endblock %}

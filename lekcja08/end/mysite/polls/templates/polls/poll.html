@@ -2,6 +2,9 @@
 
 {% block content %}
     {% if poll and vote_form %}
+        {% if error_message %}
+        <h5>{{error_message}}</h5>
+        {% endif %}
         <form action="{% url 'polls:vote' poll.id%}" method="post">
         {% csrf_token %}
         {{ vote_form }}

@@ -11,9 +11,7 @@ from .forms import VoteForm, NewPollForm
 class IndexView(generic.ListView):
     template_name = "polls/index.html"
     context_object_name = "latest_polls"
-    
-    def get_queryset(self):
-        return Poll.objects.order_by("-pub_date")[:5]
+    queryset = Poll.objects.order_by("-pub_date")[:5]
 
 class DetailView(generic.DetailView):
     model = Poll
@@ -38,12 +36,23 @@ def vote(request, poll_id):
     if request.method == 'GET':
         return HttpResponseRedirect(reverse("polls:details", args=[poll_id]))
     try:
+        if not 'voted' in request.session:
+            request.session['voted'] = [];
         poll = Poll.objects.get(pk=poll_id)
         vote_form = VoteForm(poll, data=request.POST)
-        if vote_form.is_valid():
+        if poll.id in request.session['voted']:
+            context = {
+                'poll': poll,
+                'vote_form': vote_form,
+                'error_message': "You already voted!"
+            }
+            return render(request, "polls/poll.html", context)
+        elif vote_form.is_valid():
             selected_choice = Choice.objects.get(pk = vote_form.cleaned_data['choice'])
             selected_choice.votes += 1
             selected_choice.save()
+            request.session['voted'].append(poll.id)
+            request.session.modified = True
             return HttpResponseRedirect(reverse("polls:results", args=[poll_id]))
         else:
             context = {

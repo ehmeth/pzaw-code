@@ -1,0 +1,28 @@
+Kontrakt między Danielem Klein (dalej nazywany Nauczycielem)
+a uczniami klasy ___ (dalej nazywaną Uczniami)
+
+1. Na zajęciach obowiązuje praca własna, tj.
+   a) Nauczyciel przygotowuje materiały i opisuje zadania do wykonania 
+   b) Uczniowie zapoznają się z materiałami na zajęciach lub przed nimi, a zadania realizują w trakcie trwania zajęć
+   c) Po zrealizowaniu zadań związanych z lekcją uczniowie mogą zająć się pracą projektową lub innymi obowiązkami
+   d) Jeżeli treść zadania jasno nie mówi inaczej, zabronione jest korzystanie z narzędzi typu LLM (ChatGPT, CoPilot, itp.) do realizacji zadań
+   e) Nauczyciel nie wystawia ocen za pracę, która nie jest pracą własną.
+      Próba przedstawienia cudzej pracy albo wyników działania LLM jako pracy własnej w przypadku wykrycia skutkuje wystawieniem niepoprawialnej oceny niedostatecznej za aktywność.
+2. Podstawową formą wystawiania ocen są projekty. 
+   a) Minimalna liczba projektów reazlizowana przez ucznia to 3.
+   b) Nauczyciel ustala termin realizacji oraz wymagany zakres funckjonalności projektu.
+      Minimalny czas realizacji projektu to 4 tygodnie kalendarzowe.
+      Nowy projekt może zostać zlecony dopiero po terminie realizacji poprzedniego projektu.
+   c) Praca nad projektem odbywa się podczas zajęć lub w ramach pracy domowej.
+   d) Oddanie projektu do oceny odbywa się poprzez dostarczenie Nauczycielowi linku do publicznego repozytorium kodu zawierającego kod i dokumentację projektu.
+      W przypadku kiedy kod do oceny nie znajduje się na głównej gałęzi repozytorium, Uczniowie wskazują konretną gałąź, tag bądź commit do oceny.
+   e) Przekroczenie terminu realizacji projektu skutkuje automatycznym obniżeniem oceny o jeden stopień.
+   f) Niedostarczenie jakichkolwiek efektów pracy w ramach realizacji projektu przed terminem wystawiania ocen śródrocznych lub końcoworocznych skutkuje wystawieniem oceny niedostatecznej za ten projekt.
+3. Ogólne zasady współpracy
+   a) Jedzenie i picie podczas zajęć jest dozwolone o ile nie narusza zasad BHP pracowni komputerowej.
+   b) Wychodzenie z zajęć do toalety jest dozwolone, nie wymaga pytania Nauczyciela o zgodę, wystarczy poinformować Nauczyciela.
+   c) Na zajęciach Nauczyciel i Uczniowie dbają o ciche, wygodne warunki do pracy.
+
+Zapisy pod rozwagę:
+- Zajęcia przeznaczone wyłącznie na pracę projektową. W dniu zlecenia projektu? W dniu oddawania projektu?
+- Dodatkowe formy zdobywania ocen?

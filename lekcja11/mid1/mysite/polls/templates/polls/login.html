@@ -1,0 +1,10 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+    <h3>Please login</h3>
+        <form action="{% url 'polls:login' %}" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Login">
+        </form>
+{% endblock %}

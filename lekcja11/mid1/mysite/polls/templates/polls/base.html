@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome polls page</title>
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+    <div id="content" class="container">
+        {% if user.is_authenticated %}
+        <h4>Authenticated</h4>
+        {% endif %}
+        {% block content %}
+        <p>There should be content here!</p>
+        {% endblock %}
+    </div>
+</body>
+</html>

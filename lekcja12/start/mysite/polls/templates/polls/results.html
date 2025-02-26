@@ -1,0 +1,17 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+    {% if poll %}
+        <p>{{ poll.question_text }}</p>
+        <ul>
+            {% for choice in poll.choice_set.all %}
+            <li>
+                <span class="poll-option">{{ choice.choice_text }}: {{choice.votes}} vote(s)</span><br>
+                <span class="poll-votes" style="--votes: {{choice.votes}}; --total-votes: {{total_votes}};"></span>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No such poll!</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+    {% if error_message %}
+    <div class='error'>
+        <h4>{{error_message}}</h4>
+    </div>
+    {% endif %}
+    <form action="{% url 'polls:new' %}" method="post">
+    {% csrf_token %}
+    {{ question_form }}
+    {{ choices_formset }}
+    <input type="submit" value="Create poll">
+    </form>
+    <template id="choice-set-template">
+        {{choices_formset.empty_form}}
+    </template>
+{% endblock %}

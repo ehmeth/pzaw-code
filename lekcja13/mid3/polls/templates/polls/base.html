@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome polls page</title>
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+    {% block scripts %}
+    {% endblock scripts %}
+</head>
+<body>
+    <div id="content" class="container">
+        {% if user.is_authenticated %}
+        <h4>Hello, {{user.username}}</h4>
+        <form method="post" action="{% url "polls:logout" %}" class="logout">
+            {% csrf_token %}
+            <input type="submit" value="Logout">
+        </form>
+        {% endif %}
+        {% block content %}
+        <p>There should be content here!</p>
+        {% endblock %}
+    </div>
+</body>
+</html>

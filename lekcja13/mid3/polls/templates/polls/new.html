@@ -1,0 +1,24 @@
+{% extends "polls/base.html" %}
+{% load static %}
+
+{% block scripts %}
+<script src="{% static 'polls/new-poll.js'%}" defer></script>
+{% endblock scripts %}
+
+{% block content %}
+    {% if error_message %}
+    <div class='error'>
+        <h4>{{error_message}}</h4>
+    </div>
+    {% endif %}
+    <form id="new-poll-form" action="{% url 'polls:new' %}" method="post">
+        {% csrf_token %}
+        {{ question_form }}
+        {{ choices_formset }}
+        <input type="submit" id="poll-submit-btn" value="Create poll">
+    </form>
+    <button id="add-choice-btn">Add new choice</button>
+    <template id="choice-set-template">
+        {{choices_formset.empty_form}}
+    </template>
+{% endblock %}

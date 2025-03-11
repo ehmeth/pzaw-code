@@ -1,0 +1,12 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+    <h3>Please login</h3>
+        <form action="{% url 'polls:login' %}" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="hidden" name="next" value="{{next}}" />
+        <input type="submit" value="Login">
+        </form>
+        <p>If you don't have an account, <a href="{% url 'polls:register' %}">register here</a></p>
+{% endblock %}

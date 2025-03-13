@@ -1,0 +1,10 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+    <h3>Please provide account information</h3>
+        <form action="{% url 'polls:register' %}" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Register">
+        </form>
+{% endblock %}

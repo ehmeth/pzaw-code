@@ -4,23 +4,26 @@
 
 VS_CODE_COMMIT_ID=4437686ffebaf200fa4a6e6e67f735f3edf24ada
 
-# Basic system update and upgrade
+echo Basic system update and upgrade
+echo ===============================
 
 sudo apt update
 sudo apt upgrade -y
 
-# SSH server config
+echo SSH server config
+echo =================
 
 if systemctl status ssh > /dev/null 2>&1 ; then
     echo ssh server is installed
 else
-    sudo apt install openssh-server
+    sudo apt install openssh-server -y
     sudo systemctl enable ssh
     sudo ufw allow ssh
     sudo systemctl restart ssh
 fi
 
-# Necessary apt packages
+echo Necessary apt packages
+echo ======================
 
 sudo apt install \
     git \
@@ -32,7 +35,8 @@ sudo apt install \
     nnn \
     -y
 
-# Get clone Django from GitHub
+echo Get clone Django from GitHub
+echo ============================
 
 if [ ! -d /opt/django ]; then
     sudo git clone https://github.com/django/django.git --branch 5.2 /opt/django
@@ -44,7 +48,8 @@ if [ ! -d ~/tools/django ]; then
     cp -r /opt/django/* ~/tools/django
 fi
 
-# Python venv for Django development
+echo Python venv for Django development
+echo ==================================
 
 echo ~/tools/django > pzaw_requirements.txt
 
@@ -55,7 +60,8 @@ if [ ! -d ~/.venv/django ]; then
     deactivate
 fi
 
-# npm install
+echo Install npm version manager and node+npm
+echo ========================================
 
 if [ ! -d $HOME/.nvm ]; then
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
@@ -65,7 +71,9 @@ if [ ! -d $HOME/.nvm ]; then
     nvm install node
 fi
 
-# npm cache warmup
+echo npm cache warmup
+echo ================
+
 npm install -g create-vue > /dev/null
 create-vue --typescript --eslint --prettier temp-vue-app > /dev/null
 pushd temp-vue-app
@@ -73,7 +81,8 @@ npm install > /dev/null
 popd
 rm -rf temp-vue-app
 
-# install VS Code server
+echo install VS Code server
+echo ======================
 
 
 rm -rf .vscode-server
@@ -83,7 +92,8 @@ if [ ! -f tools/vscode-server-$VS_CODE_COMMIT_ID.tgz ]; then
 fi
 tar -zxf tools/vscode-server-$VS_CODE_COMMIT_ID.tgz --directory .vscode-server/bin/$VS_CODE_COMMIT_ID --strip-components 1
 
-# install required VS Code extensions
+echo Install required VS Code extensions
+echo ===================================
 
 codeserver=~/.vscode-server/bin/$VS_CODE_COMMIT_ID/bin/code-server
 

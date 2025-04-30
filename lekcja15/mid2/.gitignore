@@ -1,0 +1,6 @@
+# database
+db.sqlite3
+
+# python stuff
+__pycache__/
+*.pyc

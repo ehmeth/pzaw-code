@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue playground!</title>
+    <link rel="stylesheet" href="static/playground.css">
+</head>
+<body>
+    <div id="app" class="app">
+        <h1>Friends</h1>
+        {{ plot_summary }}
+        <h2>{{ favorite_character.name }}</h2>
+        <h2>Character list</h2>
+        <ul>
+            <li v-for="character in characters">
+                <span>{{character.name}} {{character.surname}}</span>
+                <span class="favorite-btn" v-on:click="selectFavoriteCharacter($event, character)">
+                    <span v-if="favorite_character === character">❤️</span>    
+                    <span v-else>♡</span>    
+                </span>
+            </li>
+        </ul>
+        <form @submit="addNewCharacter">
+            <label for="newCharacterName">Name</label>
+            <input type="text" v-model="new_character_name"/>
+            <label for="newCharacterSurname">Surname</label>
+            <input type="text" v-model="new_character_surname"/>
+            <input type="submit" value="Add new characer"/>
+        </form>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="static/vueApp.js"></script>
+</body>
+</html>

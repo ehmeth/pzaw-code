@@ -1,0 +1,136 @@
+html {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container {
+  margin: 0 auto;
+  width: 80%;
+  color: #222;
+  background-color: #d4d1ff;
+  padding: 2rem;
+  position: relative;
+}
+
+.container ul {
+  list-style-type: none;
+  padding: 0.1rem;
+  margin: 0.1rem 0;
+}
+
+.container ul li {
+  margin: 0.9rem 0;
+}
+
+.container #vueapp ul li {
+  margin: 0.1rem 0;
+}
+
+.container a {
+  background-color: #b1adfe;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  margin: 0.2rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.container .poll-option {
+  font-weight: bold;
+}
+
+.container .poll-votes {
+  background-color: #96acf6;
+  display: inline-block;
+  width: calc(5px + 300px * (var(--votes) / var(--total-votes)));
+  height: 1.2rem;
+  border-radius: 0.2rem;
+}
+
+.container form input[type='submit'] {
+  background-color: #88e;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.container form div {
+  position: relative;
+}
+
+.container form fieldset {
+  border-radius: 1rem;
+  border-style: solid;
+  border-width: 0.2rem;
+  background: #88e;
+  border-color: #ddf;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.container form fieldset input {
+  margin: 0.4rem 0.1rem;
+}
+
+.container form fieldset legend {
+  background: #88e;
+  border-radius: inherit;
+  padding: 1rem 2rem;
+  border-width: 0.2rem;
+  border-style: solid;
+  border-color: #ddf;
+}
+
+.container form fieldset legend h3 {
+  margin: 0;
+}
+
+.container form label:has(+ .helptext) {
+  text-decoration: underline;
+}
+
+.container form .errorlist {
+  background-color: #eaa;
+  border-radius: 0.2rem;
+  width: auto;
+}
+
+.container form label:hover + .helptext {
+  visibility: visible;
+}
+
+.container form .helptext {
+  font-size: 0.8rem;
+  display: block;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  position: absolute;
+  z-index: 1;
+  background-color: #66d;
+  color: #ddf;
+  visibility: hidden;
+  bottom: 100%;
+}
+
+.container form li {
+  margin: 0.1rem;
+}
+.container .new-poll-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  margin-top: 3rem;
+}
+
+.logout {
+  display: inline-block;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.hideme {
+  display: none;
+}

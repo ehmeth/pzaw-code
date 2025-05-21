@@ -30,7 +30,7 @@ const routes = {
 
 const paramRoutes = [
   {
-    pattern: /^poll\/(\d+)\/$/,
+    pattern: /^\/poll\/(\d+)\/$/,
     component: PollPage,
     params: [{ name: "poll-id", type: Number }],
   }

@@ -14,8 +14,8 @@ from .models import Poll, Choice
 from .forms import VoteForm, NewPollForm
 
 def api_polls(request):
-    poll_qset = Poll.objects.order_by("-pub_date")[:5]
-    poll_list = [{"question": poll.question_text, "id": poll.pk} for poll in poll_qset]
+    poll_queryset = Poll.objects.order_by("-pub_date")[:5]
+    poll_list = [{"question": poll.question_text, "id": poll.pk} for poll in poll_queryset]
     return JsonResponse({"pollList": poll_list})
 
 class IndexView(generic.ListView):

@@ -21,7 +21,7 @@ getPollList();
 <template>
   <h2>{{ props.title }}:</h2>
   <ul>
-    <li v-for="poll in pollList"><a :href="`#poll/${poll.id}/`">{{ poll.question }}</a></li>
+    <li v-for="poll in pollList"><a :href="`#/poll/${poll.id}/`">{{ poll.question }}</a></li>
   </ul>
 </template>
 

@@ -15,7 +15,7 @@ function addNextChoice() {
 
 async function createPoll() {
   let data = await makeRequest.post('/polls/api/new', { question: question.value, choices: choiceList.value })
-  window.location.hash = `#/polls/${data.poll_id}`;
+  window.location.hash = `#/poll/${data.poll_id}/`;
 }
 </script>
 

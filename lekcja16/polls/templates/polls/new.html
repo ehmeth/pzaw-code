@@ -1,0 +1,36 @@
+{% extends "polls/base.html" %}
+{% load static %}
+
+{% block scripts %}
+<script src="{% static 'polls/external/vue.global.js' %}" defer></script>
+<script src="{% static 'polls/new-poll.js'%}" defer></script>
+{% endblock scripts %}
+
+{% block content %}
+    {% if error_message %}
+    <div class='error'>
+        <h4>{{error_message}}</h4>
+    </div>
+    {% endif %}
+    {% verbatim vueapp %}
+    <div id="vueapp">
+        <h2>Create new poll</h2>
+        <label for="question-text">Question:</label>
+        <input type="text" id="question-text"  v-model="question"/>
+        <ul v-for="(choice, idx) in choiceList" :key="`choice-${idx}`">
+            <li>
+                <label for="`choice-text-${idx}`">Choice:</label>
+                <input type="text" id="`choice-text-${idx}`" v-model="choiceList[idx]" placeholder="Choice text.." />
+            </li>
+        </ul>
+        <button id="add-choice-btn" @click="addNextChoice">Add new choice</button>
+        <button id="create-poll-btn" @click="createPoll">Create new poll</button>
+    </div>
+    {% endverbatim vueapp %}
+    <div class="hideme">
+    <form id="new-poll-form" action="{% url 'polls:new' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+    </form>
+    </div>
+{% endblock %}

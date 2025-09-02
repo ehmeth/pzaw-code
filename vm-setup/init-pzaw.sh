@@ -2,7 +2,7 @@
 
 # Variables
 
-VS_CODE_COMMIT_ID=4437686ffebaf200fa4a6e6e67f735f3edf24ada
+VS_CODE_COMMIT_ID=6f17636121051a53c88d3e605c491d22af2ba755
 
 echo Basic system update and upgrade
 echo ===============================

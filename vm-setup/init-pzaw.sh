@@ -58,7 +58,6 @@ rm -rf temp-app
 echo install VS Code server
 echo ======================
 
-
 rm -rf .vscode-server
 mkdir -p .vscode-server/bin/$VS_CODE_COMMIT_ID
 if [ ! -f tools/vscode-server-$VS_CODE_COMMIT_ID.tgz ]; then
@@ -77,5 +76,10 @@ if [ -e $codeserver ]; then
         esbenp.prettier-vscode
 EOF
 fi
+
+echo Configure git credential helper
+echo ===============================
+
+git config --global credential.helper 'cache --timeout 5400'
 
 echo Done. PZAW env configured

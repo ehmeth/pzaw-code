@@ -27,59 +27,33 @@ echo ======================
 
 sudo apt install \
     git \
-    python3 \
-    python3-pip \
-    python3-venv \
-    python-is-python3 \
     silversearcher-ag \
     nnn \
     -y
-
-echo Get clone Django from GitHub
-echo ============================
-
-if [ ! -d /opt/django ]; then
-    sudo git clone https://github.com/django/django.git --branch 5.2 /opt/django
-
-fi
-
-if [ ! -d ~/tools/django ]; then
-    mkdir -p ~/tools/django
-    cp -r /opt/django/* ~/tools/django
-fi
-
-echo Python venv for Django development
-echo ==================================
-
-echo ~/tools/django > pzaw_requirements.txt
-
-if [ ! -d ~/.venv/django ]; then
-    python -m venv ~/.venv/django
-    source ~/.venv/django/bin/activate
-    pip install -r pzaw_requirements.txt
-    deactivate
-fi
 
 echo Install npm version manager and node+npm
 echo ========================================
 
 if [ ! -d $HOME/.nvm ]; then
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-    nvm install node
+    nvm install --lts
+    nvm install-latest-npm
 fi
 
 echo npm cache warmup
 echo ================
 
-npm install -g create-vue > /dev/null
-create-vue --typescript --eslint --prettier temp-vue-app > /dev/null
-pushd temp-vue-app
-npm install > /dev/null
+mkdir temp-app
+pushd temp-app
+npm init -y > /dev/null
+npm install express ejs morgan cookie-parser > /dev/null
+npm install --save-dev prettier eslint eslint-config-prettier globals
+npm install> /dev/null
 popd
-rm -rf temp-vue-app
+rm -rf temp-app
 
 echo install VS Code server
 echo ======================
@@ -99,9 +73,8 @@ codeserver=~/.vscode-server/bin/$VS_CODE_COMMIT_ID/bin/code-server
 
 if [ -e $codeserver ]; then
     xargs -n 1 $codeserver --install-extension <<- EOF
-        ms-python.python@2025.2.0
-        batisteo.vscode-django@1.15.0
-        vue.volar@2.2.8
+        dbaeumer.vscode-eslint
+        esbenp.prettier-vscode
 EOF
 fi
 

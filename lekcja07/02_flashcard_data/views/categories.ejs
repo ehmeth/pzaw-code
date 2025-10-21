@@ -1,0 +1,12 @@
+<%- include("head.partial.ejs") %>
+
+<main>
+  <h1><%= title %></h1>
+  <ul id="categories">
+    <% categories.forEach(function(category){ %>
+    <li><%= category %></li>
+    <% }) %>
+  </ul>
+</main>
+
+<%- include("foot.partial.ejs") %>

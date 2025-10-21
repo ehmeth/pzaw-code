@@ -1,0 +1,27 @@
+<form action="/cards/<%=category.id%>/new" method="POST">
+  <div>
+    <label for="card_front">Awers</label>
+    <input
+      type="text"
+      name="front"
+      id="card_front"
+      required
+      minlength="1"
+      maxlength="500"
+    />
+  </div>
+  <div>
+    <label for="card_back">Rewers</label>
+    <input
+      type="text"
+      name="back"
+      id="card_front"
+      required
+      minlength="1"
+      maxlength="500"
+    />
+  </div>
+  <div>
+    <button>Dodaj</button>
+  </div>
+</form>

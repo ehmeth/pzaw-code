@@ -1,0 +1,33 @@
+<form action="/cards/<%=category.id%>/new" method="POST">
+  <div>
+    <label for="card_front">Awers</label>
+    <input
+      type="text"
+      name="front"
+      id="card_front"
+      required
+      minlength="1"
+      maxlength="500"
+      <% if (locals.front){ %>
+      value="<%= front %>"
+      <% }%>
+    />
+  </div>
+  <div>
+    <label for="card_back">Rewers</label>
+    <input
+      type="text"
+      name="back"
+      id="card_front"
+      required
+      minlength="1"
+      maxlength="500"
+      <% if (locals.back){ %>
+      value="<%= back %>"
+      <% }%>
+    />
+  </div>
+  <div>
+    <button>Dodaj</button>
+  </div>
+</form>

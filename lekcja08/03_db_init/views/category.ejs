@@ -1,0 +1,16 @@
+<%- include("head.partial.ejs") %>
+
+<main>
+  <h1><%= title %></h1>
+  <ul id="flashcards">
+    <% category.cards.forEach(function(card){ %>
+    <li><%= card.front %> - <%= card.back %></li>
+    <% }) %>
+  </ul>
+  <div>
+    <h3>Nowa fiszka</h3>
+    <%- include("forms/new_card.ejs") %>
+  </div>
+</main>
+
+<%- include("foot.partial.ejs") %>

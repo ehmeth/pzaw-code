@@ -1,0 +1,13 @@
+<%- include("head.partial.ejs") %>
+
+<main>
+  <h1><%= title %></h1>
+  <ul id="categories">
+    <% categories.forEach(function(category){ %>
+    <li><a href="/cards/view/<%= category.id %>"><%= category.name %></a></li>
+    <% }) %>
+  </ul>
+  <a href="/cards/new_category">Dodaj nową kategorię</a>
+</main>
+
+<%- include("foot.partial.ejs") %>

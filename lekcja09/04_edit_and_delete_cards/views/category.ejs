@@ -1,0 +1,25 @@
+<%- include("head.partial.ejs") %>
+<main>
+  <nav>
+    <a href="/cards">Powrót do listy kategorii</a>
+  </nav>
+  <h1><%= title %></h1>
+  <a href="/cards/edit/<%= category.id %>" class="action-link">Edytuj katergorię</a>
+  <% if (category.cards && category.cards.length > 0) { %>
+    <ul id="flashcards">
+      <% category.cards.forEach(function(card){ %>
+      <li>
+        <%= card.front %> - <%= card.back %>
+      </li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>W tej kategorii nie ma żadnych fiszek. Dodaj nowe poniżej.</p>
+  <% } %>
+  <div>
+    <h3>Nowa fiszka</h3>
+    <%- include("forms/new_card.ejs") %>
+  </div>
+</main>
+
+<%- include("foot.partial.ejs") %>

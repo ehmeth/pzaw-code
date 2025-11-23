@@ -1,0 +1,26 @@
+html {
+    background-color: #830;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 11pt;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+main {
+    background-color: #ded;
+    width: 70rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.action-link {
+    font-size: 0.8rem;
+}
+
+.flashcard-action {
+    display: inline;
+}

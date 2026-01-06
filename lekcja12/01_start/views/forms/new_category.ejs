@@ -1,0 +1,19 @@
+<form action="/cards/new_category" method="POST">
+  <div>
+    <label for="category_name">Nazwa kategorii</label>
+    <input
+      type="text"
+      name="name"
+      id="category_name"
+      required
+      minlength="3"
+      maxlength="100"
+      <% if (locals.name){ %>
+      value="<%= name %>"
+      <% }%>
+    />
+  </div>
+  <div>
+    <button>Dodaj</button>
+  </div>
+</form>

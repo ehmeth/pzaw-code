@@ -1,0 +1,34 @@
+<%- include("head.partial.ejs") %>
+<main>
+  <nav>
+    <a href="/cards">Powrót do listy kategorii</a>
+  </nav>
+  <h1><%= title %></h1>
+  <div>
+    <% if (locals.errors != null) {%>
+    <ul id="errors">
+      <% errors.forEach(function(error){ %>
+      <li><%= error %></li>
+      <% }) %>
+    </ul>
+    <% } %>
+    <%- include("forms/edit_category.ejs") %>
+    <% if (locals.category.cards && locals.category.cards.length > 0) { %>
+      <ul id="flashcards">
+        <% category.cards.forEach(function(card){ %>
+        <li>
+          <%- include("forms/edit_card.ejs", {card, category}) %>
+          <form class="flashcard-action" action="/cards/delete/<%= category.id %>/<%= card.id %>" method="POST">
+            <button>Usuń</button>
+          </form>
+        </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>W tej kategorii nie ma żadnych fiszek. Dodaj nowe poniżej.</p>
+    <% } %>
+  </div>
+  <a href="/cards/view/<%= category.id %>">Powrót</a>
+</main>
+
+<%- include("foot.partial.ejs") %>

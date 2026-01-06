@@ -1,0 +1,6 @@
+<form class="flashcard-action" action="/cards/edit/<%= category.id %>/<%= card.id %>" method="POST">
+    <input type="text" name="front" id="flashcard-<%= card.id %>-front" value="<%= card.front %>" required minlength="1" maxlength="500"> 
+    -
+    <input type="text" name="back" id="flashcard-<%= card.id %>-back" value="<%= card.back %>" required minlength="1" maxlength="500"> 
+    <button>Zapisz</button>
+</form>

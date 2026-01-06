@@ -1,0 +1,19 @@
+<form action="/cards/edit/<%=category.id%>" method="POST">
+  <div>
+    <label for="category_name">Nazwa kategorii</label>
+    <input
+      type="text"
+      name="name"
+      id="category_name"
+      required
+      minlength="3"
+      maxlength="100"
+      <% if (locals.category.name){ %>
+      value="<%= category.name %>"
+      <% }%>
+    />
+  </div>
+  <div>
+    <button>Zapisz</button>
+  </div>
+</form>

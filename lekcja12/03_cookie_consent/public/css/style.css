@@ -1,0 +1,196 @@
+html {
+    --backdrop: #830;
+    --background: #ded;
+    --banner-background: #efe;
+    --button-background: #dba;
+    --text-color-normal: #222;
+    --text-color-link: #44e;
+    background-color: var(--backdrop);
+    color: var(--text-color-normal);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 11pt;
+}
+
+html[data-theme='dark'] {
+    --backdrop: #510;
+    --background: #483232;
+    --banner-background: #3a2828;
+    --button-background: rgb(63, 36, 36);
+    --text-color-normal: #ddd;
+    --text-color-link: #77f;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: var(--background);
+    width: 70rem;
+    border-radius: 0.5rem;
+}
+
+header {
+    padding: 1rem;
+    display: flex;
+}
+
+header section.controls {
+    justify-self: end;
+    margin-left: auto;
+}
+
+main {
+    padding: 1rem;
+}
+
+a {
+  outline-color: transparent;
+}
+
+a:link {
+  color: var(--text-color-link);
+}
+
+a:visited {
+  color: var(--text-color-link);
+}
+
+.action-link {
+    font-size: 0.8rem;
+}
+
+.flashcard-action {
+    display: inline;
+}
+
+/* Based on https://gist.github.com/danielleallennn/9713ad2d95826efc60e039803eae7be6 */
+/* Cookie Banner Container */
+.cookie-container {
+  /* Positioning the banner fixed at the bottom-left corner */
+  position: fixed;
+  bottom: 20px; /* Distance from the bottom of the viewport */
+  right: 20px; /* Distance from the right side of the viewport */
+  
+  /* Adjusting the overall dimensions and padding of the container */
+  width: 400px; /* Width of the banner */
+  padding: 25px; /* Space inside the banner for text/content */
+  
+  /* Styling the background, border, and text */
+  background-color: var(--banner-background); /* White background */
+  border: 1px solid var(--backdrop); /* Thin border in a specific brown color */
+  border-radius: 0.5rem;
+  font-family: "Roboto Mono", "Courier New", monospace; /* Priority fonts */
+  font-size: 0.9rem; /* Base font size for the banner text */
+  letter-spacing: 0.04rem; /* Spacing between letters for readability */
+  
+  /* Ensures all text in the container is transformed to uppercase */
+  text-transform: uppercase; 
+  
+  /* Ensures the banner's internal elements fit within its bounds */
+  box-sizing: border-box;
+}
+.custom-break {
+  display: block;
+  height: 10px; /* Adjust the height to control the space between paragraphs */
+  margin: 15px 0; /* Adds margin space above and below the break */
+}
+
+/* Container for the Accept/Decline buttons */
+#buttonContainer {
+  /* Flexbox layout to align buttons horizontally */
+  display: flex;
+  justify-content: space-between; /* Adds equal spacing between buttons */
+  
+  /* Space between buttons */
+  gap: 15px; /* Space between the buttons */
+  
+  /* Adjusts space between buttons and the banner text */
+  margin-top: 15px; /* Adds space between buttons and the text */
+}
+
+#buttonContainer a {
+  text-align: center;
+}
+
+/* Styling for the Accept/Decline buttons */
+.cookieButton {
+  background-color: var(--background);
+  border: 1px solid var(--backdrop);
+  border-radius: 0.5rem;
+  padding: 10px 20px; /* Padding inside the buttons to make them bigger */
+  
+  cursor: pointer; /* Changes the mouse pointer to a hand on hover */
+  width: 125px; /* Sets a consistent width for both buttons */
+}
+
+a.cookieButton {
+  color: var(--text-color-normal);
+  text-align: center;
+  text-decoration: none;
+
+  /* Font settings for the button text */
+  font-family: "Roboto Mono", "Courier New", monospace; /* Priority fonts */
+  font-size: 0.9rem; /* Font size for the buttons */
+  text-transform: uppercase; /* Ensures button text is uppercase */
+  letter-spacing: 0.04rem; /* Letter spacing for readability */
+}
+
+/* Hover effect for buttons */
+.cookieButton:hover {
+  background-color: var(--button-background); /* Light brown color for button on hover */
+}
+
+/* Responsive Design for Mobile (max width 600px) */
+@media (max-width: 600px) {
+  .cookie-container {
+    /* Make the banner nearly full-width on small screens */
+    width: 90%;
+    bottom: 10px; /* Adjusts position from the bottom on small screens */
+    left: 5%; /* Center the banner horizontally */
+    padding: 15px; /* Reduced padding for smaller screens */
+    font-size: 0.8rem; /* Smaller font size for mobile screens */
+  }
+
+  /* Adjust button padding for smaller screens */
+  .cookieButton {
+    padding: 8px 15px;
+  }
+
+  /* Make the buttons stack vertically on mobile screens */
+  #acceptButton, #declineButton {
+    width: 100%; /* Full-width buttons on small screens */
+  }
+
+  /* Stack buttons vertically */
+  #buttonContainer {
+    flex-direction: column; /* Buttons will be displayed one below the other */
+    gap: 10px; /* Reduced gap between vertically stacked buttons */
+  }
+}
+
+/* Responsive Design for Tablet (between 601px and 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .cookie-container {
+    width: 70%; /* Adjusted width for tablet screens */
+    bottom: 15px; /* Adjusted position from the bottom */
+    left: 15%; /* Center the banner horizontally */
+    padding: 12px; /* Adjusted padding for tablets */
+    font-size: 12px; /* Slightly larger font size than mobile */
+  }
+
+  .cookieButton {
+    padding: 9px 18px; /* Adjusted button padding for tablets */
+  }
+
+  #acceptButton, #declineButton {
+    width: 45%; /* Slightly smaller button width for tablet screens */
+  }
+
+  /* Adjust gap between buttons for tablets */
+  #buttonContainer {
+    gap: 12px;
+  }
+}

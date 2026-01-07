@@ -5,13 +5,13 @@ const THEME_COOKIE = "fisz-theme";
 
 export function themeToggle(req, res) {
   var theme = req.cookies[THEME_COOKIE];
-  if (theme === "light") {
-    theme = "dark";
-  } else {
+  if (theme === "dark") {
     theme = "light";
+  } else {
+    theme = "dark";
   }
   res.cookie(THEME_COOKIE, theme);
-  console.log(req.query);
+
   var next = req.query.next || "/";
   res.redirect(next);
 }

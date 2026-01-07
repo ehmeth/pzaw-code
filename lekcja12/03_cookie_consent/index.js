@@ -17,7 +17,6 @@ app.use(cookieParser());
 function settingsLocals(req, res, next) {
   res.locals.app = settings.getSettings(req);
   res.locals.page = req.path;
-  console.log(res.locals.app);
   next();
 }
 app.use(settingsLocals);

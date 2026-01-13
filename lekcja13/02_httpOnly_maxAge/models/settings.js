@@ -1,0 +1,72 @@
+"use strict";
+
+const ONE_DAY = 24 * 60 * 60 * 1000;
+const ONE_MONTH = 30 * ONE_DAY;
+const THEME_COOKIE = "fisz-theme";
+const CONSENT_COOKIE = "fisz-consent";
+
+export function themeToggle(req, res) {
+  var theme = req.cookies[THEME_COOKIE];
+  if (theme === "dark") {
+    theme = "light";
+  } else {
+    theme = "dark";
+  }
+  res.cookie(THEME_COOKIE, theme);
+
+  var next = req.query.next || "/";
+  res.redirect(next);
+}
+
+export function acceptCookies(req, res) {
+  res.cookie(CONSENT_COOKIE, true, { maxAge: ONE_MONTH });
+
+  var next = req.query.next || "/";
+  res.redirect(next);
+}
+
+export function declineCookies(req, res) {
+  res.cookie(CONSENT_COOKIE, false, { maxAge: ONE_MONTH });
+
+  var next = req.query.next || "/";
+  res.redirect(next);
+}
+
+export function manageCookies(req, res) {
+  // TODO Handle cookie management
+  res.render("cookies_manage", {
+    title: "Zarządzanie cookies",
+  });
+}
+
+export function getSettings(req) {
+  const settings = {
+    theme: req.cookies[THEME_COOKIE] || "light",
+    cookie_consent: req.cookies[CONSENT_COOKIE] || null,
+  };
+  if (settings.cookie_consent != null) {
+    settings.cookie_consent = settings.cookie_consent === "true";
+  }
+  return settings;
+}
+
+function settingsHandler(req, res, next) {
+  res.locals.app = getSettings(req);
+  res.locals.page = req.path;
+
+  if (res.locals.app.cookie_consent != null) {
+    res.cookie(CONSENT_COOKIE, res.locals.app.cookie_consent, {
+      maxAge: ONE_MONTH,
+    });
+  }
+  next();
+}
+
+export default {
+  themeToggle,
+  acceptCookies,
+  declineCookies,
+  manageCookies,
+  getSettings,
+  settingsHandler,
+};

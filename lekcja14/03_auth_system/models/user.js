@@ -49,7 +49,7 @@ export async function createUser(username, password) {
   let createdAt = Date.now();
   let passhash = await argon2.hash(password, HASH_PARAMS);
 
-  return db_ops.create_user.get(username, passhash.toString("hex"), createdAt);
+  return db_ops.create_user.get(username, passhash, createdAt);
 }
 
 export async function validatePassword(username, password) {

@@ -165,7 +165,7 @@ function validateForm(data, fields) {
       data[field.name] !== data[field.must_match]
     ) {
       errors[field.name] =
-        `Zawartość musi się zgadzać z polem ${fields[field.must_match].display_name}`;
+        `Zawartość musi się zgadzać z polem ${fields.find((f) => f.name === field.must_match).display_name}`;
     }
   });
   return errors;

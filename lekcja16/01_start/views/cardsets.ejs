@@ -1,0 +1,24 @@
+<%- include("head.partial.ejs") %>
+
+<main>
+  <h1><%= title %></h1>
+  <% if (last_viewed_cardsets?.length > 0) { %>
+  <h2>Ostatnio przeglądane</h2>
+  <ul id="recently_viewed">
+    <% last_viewed_cardsets.forEach(function(cardset){ %>
+    <li><a href="/view/<%= cardset.slug %>"><%= cardset.name %></a></li>
+    <% }) %>
+  </ul>
+  <h2>Wszystkie</h2>
+  <% } /* (last_viewed_cardsets.length > 0) */ %>
+  <ul id="cardsets">
+    <% cardsets.forEach(function(cardset){ %>
+    <li><a href="/view/<%= cardset.slug %>"><%= cardset.name %></a></li>
+    <% }) %>
+  </ul>
+  <% if (user != null) { %>
+  <a href="/new_cardset">Dodaj nowy zestaw</a>
+  <% } %>
+</main>
+
+<%- include("foot.partial.ejs") %>

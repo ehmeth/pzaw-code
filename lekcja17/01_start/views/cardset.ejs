@@ -1,0 +1,27 @@
+<%- include("head.partial.ejs") %>
+<main>
+  <h1><%= title %></h1>
+  <div class="cardset-author">Autor: <%= cardset.author.username %></div>
+  <% if (cardset.editableBy(user)) { %>
+    <a href="/edit/<%= cardset.slug %>" class="action-link">Edytuj zestaw</a>
+  <% } %>
+  <% if (cardset.cards && cardset.cards.length > 0) { %>
+    <ul id="flashcards">
+      <% cardset.cards.forEach(function(card){ %>
+      <li>
+        <%= card.front %> - <%= card.back %>
+      </li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>W tym zestawie nie ma żadnych fiszek. Dodaj nowe poniżej.</p>
+  <% } %>
+  <% if (cardset.editableBy(user)) { %>
+  <div>
+    <h3>Nowa fiszka</h3>
+    <%- include("forms/new_card.ejs") %>
+  </div>
+  <% } %>
+</main>
+
+<%- include("foot.partial.ejs") %>

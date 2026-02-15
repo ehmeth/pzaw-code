@@ -1,0 +1,7 @@
+<form class="flashcard-action" action="/edit/<%= cardset.slug %>/<%= card.id %>" method="POST">
+    <input type="text" name="front" id="flashcard-<%= card.id %>-front" value="<%= card.front %>" required minlength="1" maxlength="500"> 
+    -
+    <input type="text" name="back" id="flashcard-<%= card.id %>-back" value="<%= card.back %>" required minlength="1" maxlength="500"> 
+    <input type="hidden" name="csrf_token" id="form_csrf_token" value="<%-session.csrf_token%>">
+    <button>Zapisz</button>
+</form>

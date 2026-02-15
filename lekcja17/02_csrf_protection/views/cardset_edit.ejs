@@ -1,0 +1,32 @@
+<%- include("head.partial.ejs") %>
+<main>
+  <h1><%= title %></h1>
+  <div>
+    <% if (locals.errors != null) {%>
+    <ul id="errors">
+      <% errors.forEach(function(error){ %>
+      <li><%= error %></li>
+      <% }) %>
+    </ul>
+    <% } %>
+    <%- include("forms/edit_cardset.ejs") %>
+    <% if (locals.cardset.cards && locals.cardset.cards.length > 0) { %>
+      <ul id="flashcards">
+        <% cardset.cards.forEach(function(card){ %>
+        <li>
+          <%- include("forms/edit_card.ejs", {card, cardset}) %>
+          <form class="flashcard-action" action="/delete/<%= cardset.slug %>/<%= card.id %>" method="POST">
+            <input type="hidden" name="csrf_token" id="form_csrf_token" value="<%-session.csrf_token%>">
+            <button>Usuń</button>
+          </form>
+        </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>W tym zestawie nie ma żadnych fiszek. Dodaj nowe poniżej.</p>
+    <% } %>
+  </div>
+  <a href="/view/<%= cardset.slug %>">Powrót</a>
+</main>
+
+<%- include("foot.partial.ejs") %>

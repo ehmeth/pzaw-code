@@ -1,0 +1,20 @@
+<form action="/edit/<%= cardset.slug %>" method="POST">
+  <div>
+    <label for="cardset_name">Nazwa zestawu</label>
+    <input
+      type="text"
+      name="name"
+      id="cardset_name"
+      required
+      minlength="3"
+      maxlength="100"
+      <% if (locals.cardset.name){ %>
+      value="<%= cardset.name %>"
+      <% }%>
+    />
+  </div>
+  <input type="hidden" name="csrf_token" id="form_csrf_token" value="<%-session.csrf_token%>">
+  <div>
+    <button>Zapisz</button>
+  </div>
+</form>

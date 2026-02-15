@@ -256,7 +256,7 @@ app.post("/edit/:cardset_slug/:card_id", auth.login_required, (req, res) => {
   }
 });
 
-app.post("/edit/:cardset_slug/:card_id", auth.login_required, (req, res) => {
+app.get("/edit/:cardset_slug/:card_id", auth.login_required, (req, res) => {
   res.redirect(`/edit/${req.params.cardset_slug}`);
 });
 
@@ -276,7 +276,7 @@ app.post("/delete/:cardset_slug/:card_id", auth.login_required, (req, res) => {
   }
 });
 
-app.post("/edit/:cardset_slug/:card_id", auth.login_required, (req, res) => {
+app.get("/delete/:cardset_slug/:card_id", auth.login_required, (req, res) => {
   res.redirect(`/edit/${req.params.cardset_slug}`);
 });
 

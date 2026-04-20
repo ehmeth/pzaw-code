@@ -1,0 +1,11 @@
+<%- include("head.partial.ejs") %>
+
+<main>
+  <h1><%= title %></h1>
+  <div>
+    <%- include("forms/generic.ejs", form) %>
+  </div>
+  <span>Nie masz konta? <a href="/auth/signup<%- (locals.nextUrl ? `?next=${encodeURIComponent(nextUrl)}` : '') %>">Zarejestruj się!</a></span>
+</main>
+
+<%- include("foot.partial.ejs") %>

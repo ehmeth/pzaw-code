@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html data-theme="<%- app.theme %>" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <script defer src="js/theme.js"></script>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="container" id="container">
+      <div class="settings">
+        <section class="controls">
+          <a href="#switch-theme" id="theme_toggle"></a>
+        </section>
+      </div>
+      <header>
+      <nav>
+        <% if (page !== "/") { %>
+        <a href="/">Powrót do listy zestawów</a>
+        <% } %>
+      </nav>
+      <section class="controls">
+        <% if (!page.startsWith("/auth/")) { %> 
+          <% if (user) { %>
+            <span>Hello <%= user.username %></span>
+            <a href="/auth/logout">Wyloguj się</a>
+          <% } else { %>
+            <a href="/auth/login">Zaloguj się</a>
+          <% } %>
+        <% } %>
+      </section>
+      </header>

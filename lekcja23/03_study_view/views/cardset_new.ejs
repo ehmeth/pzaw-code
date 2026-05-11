@@ -1,0 +1,17 @@
+<%- include("head.partial.ejs") %>
+<main>
+  <h1><%= title %></h1>
+  <div>
+    <h3>Nowy zestaw fiszek</h3>
+    <% if (locals.errors != null) {%>
+    <ul id="errors">
+      <% errors.forEach(function(error){ %>
+      <li><%= error %></li>
+      <% }) %>
+    </ul>
+    <% } %>
+    <%- include("forms/new_cardset.ejs") %>
+  </div>
+</main>
+
+<%- include("foot.partial.ejs") %>
